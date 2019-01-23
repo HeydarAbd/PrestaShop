@@ -1,6 +1,6 @@
 package com.prestashop.utilities;
 
-public class BrowserUtilities {
+public class BrowserUtils {
 
 
     public static final boolean ISWINDOWS;

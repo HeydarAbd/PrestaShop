@@ -2,9 +2,11 @@ package com.prestashop.utilities;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.safari.SafariDriver;
 
 import java.util.concurrent.TimeUnit;
 
@@ -28,8 +30,16 @@ public class Driver {
                     driver = new FirefoxDriver();
                     break;
                 case "ie":
+                    if (BrowserUtils.ISMAC)
+                        throw new WebDriverException("You are operating Mac OS which doesn't support Internet Explorer");
                     WebDriverManager.iedriver().setup();
                     driver = new InternetExplorerDriver();
+                    break;
+                case "safari":
+                    if (BrowserUtils.ISWINDOWS)
+                        throw new WebDriverException("You are operating Windows OS which doesn't support Safari");
+                    WebDriverManager.getInstance(SafariDriver.class).setup();
+                    driver = new SafariDriver();
                     break;
             }
 
