@@ -1,0 +1,6 @@
+# Per PrestaShop homework the followings are ignored
+.idea
+target
+test-output
+bin
+DC_Store
